@@ -15,7 +15,7 @@ class UI{
         
         UI.updateItemsCount();
 
-        document.querySelector(".all").classList.add("mode");
+        document.querySelectorAll(".all").forEach(i=>i.classList.add("mode"));
     }
 
 
@@ -185,13 +185,20 @@ document.addEventListener("DOMContentLoaded",UI.displayItems());
 
 
 const form=document.querySelector("form");
-// ul events
+// form events
 form.addEventListener("click", (e)=>{
     // form checkbox 
     if(e.target.className==="new_todo_checkbox")
         e.target.nextElementSibling.classList.toggle("cross");
 });
-document.querySelector("ul").addEventListener("click",(e)=>{
+
+// UI events
+document.querySelector("ul").addEventListener("click",(e)=>ul(e));
+
+// mobile events
+document.querySelector(".mobile").addEventListener("click",(e)=>ul(e));
+
+function ul(e){
     // items checkbox
     if(e.target.className==="todo_item_check")
         checkMark(e.target.nextElementSibling);
@@ -208,9 +215,9 @@ document.querySelector("ul").addEventListener("click",(e)=>{
     // filter active
     if(e.target.classList.contains("active")){
         if(!e.target.classList.contains("mode")){
-            document.querySelector(".all").classList.remove("mode");
-            document.querySelector(".active").classList.add("mode");
-            document.querySelector(".completed").classList.remove("mode");
+            document.querySelectorAll(".all").forEach(i=>i.classList.remove("mode"));
+            document.querySelectorAll(".active").forEach(i=>i.classList.add("mode"));
+            document.querySelectorAll(".completed").forEach(i=>i.classList.remove("mode"));
 
             UI.filterActive();
         }
@@ -219,9 +226,9 @@ document.querySelector("ul").addEventListener("click",(e)=>{
     // filter completed
     if(e.target.classList.contains("completed")){
         if(!e.target.classList.contains("mode")){
-            document.querySelector(".all").classList.remove("mode");
-            document.querySelector(".active").classList.remove("mode");
-            document.querySelector(".completed").classList.add("mode");
+            document.querySelectorAll(".all").forEach(i=>i.classList.remove("mode"));
+            document.querySelectorAll(".active").forEach(i=>i.classList.remove("mode"));
+            document.querySelectorAll(".completed").forEach(i=>i.classList.add("mode"));
 
             UI.filterCompleted();
         }
@@ -230,14 +237,15 @@ document.querySelector("ul").addEventListener("click",(e)=>{
     //filter all
     if(e.target.classList.contains("all")){
         if(!e.target.classList.contains("mode")){
-            document.querySelector(".all").classList.add("mode");
-            document.querySelector(".active").classList.remove("mode");
-            document.querySelector(".completed").classList.remove("mode");
+            document.querySelectorAll(".all").forEach(i=>i.classList.add("mode"));
+            document.querySelectorAll(".active").forEach(i=>i.classList.remove("mode"));
+            document.querySelectorAll(".completed").forEach(i=>i.classList.remove("mode"));
 
             UI.filterAll();
         }
     }
-});
+}
+
 
 function checkMark(text){
     text.classList.toggle("cross");
@@ -253,6 +261,19 @@ function checkMark(text){
 // add new todoItem
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
+
+    // validation
+    // // empty todo validation
+    if(e.target.children[1].value==""){
+        const err=document.createElement("div");
+
+        err.className="error";
+        err.textContent="Please Enter non-Empty Task";
+        document.querySelector(".container").insertBefore(err, document.querySelector("form"));
+        
+        setTimeout(()=> err.remove(), 1500);
+    }
+    else{
     let checked=(e.target.children[1].classList.contains("cross"))?"checked":"";
     const todo=new TodoItem(checked, e.target.children[1].value);
     UI.addItem(todo);
@@ -263,6 +284,7 @@ form.addEventListener("submit", (e)=>{
     e.target.children[1].classList.remove("cross");
 
     UI.updateItemsCount();
+    }
 });
 
 
