@@ -1,0 +1,132 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing:border-box;
+    list-style-type:none;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:url("./images/bg-desktop-light.jpg") no-repeat ;
+}
+
+/* variables */
+:root{
+    --primary-color: blue;
+}
+
+/* header */
+h1{
+    font-size:3em;
+    margin:50px 0px;
+    color: white;
+    letter-spacing:0.5em;
+}
+
+/* form */
+form, li{
+    background: white;
+    color:black;
+    display:flex;
+    height:50px;
+    border-radius:3px;
+    /* align-content:center; */
+}
+input[type="checkbox"]{
+    cursor:pointer;
+}
+
+form .new_todo_checkbox{
+    width: 5%;
+    margin-inline:15px;
+}
+
+form .new_todo_text{
+    width:100%;
+    border:none;
+    border-radius:3px;
+}
+
+/* todo items */
+ul{
+    margin:30px 0;
+    border-radius: 10px;
+}
+
+ul li{
+    border:1px solid rgb(146, 139, 139);
+    margin-bottom:1px;
+}
+
+.todo_item_check{
+    width:6%;
+    margin-inline:15px;
+}
+
+
+.todo_item_text{
+    width:100%;
+    align-self:center;
+}
+
+button, .add_button{
+    border:none;
+    background-color:white;
+    color:black;
+    font-size:1em;
+    opacity:70%;
+}
+button:hover, .add_button{
+    cursor:pointer;
+}
+
+.delete_button, .add_button{
+    width: 10%;
+    border-radius: 3px;
+    font-size:1.3em;
+}
+.add_button{
+    font-size: 2em;
+    color:purple;
+}
+.delete_button:hover{
+    color: red;
+}
+
+.options{
+    justify-content: space-between;
+    align-items:center;
+    padding: 15px;
+}
+
+.filters button:hover{
+    color:blue;
+}
+.clear_button button:hover{
+    color:red;
+}
+
+.items_count{
+    opacity:70%;
+}
+.active{
+    margin-inline:5px;
+}
+
+/* utility classes */
+.container{
+    max-width: 500px;
+    margin: auto;
+}
+
+.cross{
+    text-decoration:line-through;
+}
+
+.mode{
+    color:blue;
+}
+
+.hide{
+    display:none;
+}
