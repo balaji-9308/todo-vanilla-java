@@ -7,9 +7,8 @@
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-/*     background:url("./images/bg-desktop-light.jpg") no-repeat ; */
+    /* background:url("./images/bg-desktop-light.jpg") no-repeat ; */
     background-color:rgb(0, 128, 111);
-
 }
 
 /* variables */
@@ -47,6 +46,7 @@ form .new_todo_text{
     width:100%;
     border:none;
     border-radius:3px;
+    font-size:1em;
 }
 
 /* todo items */
@@ -60,26 +60,29 @@ ul li{
     margin-bottom:1px;
 }
 
+/* todo checkbox */
 .todo_item_check{
     width:6%;
     margin-inline:15px;
 }
 
-
+/* todo text content */
 .todo_item_text{
     width:100%;
     align-self:center;
 }
 
+/* delete and add buttons */
 button, .add_button{
     border:none;
     background-color:white;
     color:black;
     font-size:1em;
     opacity:70%;
-}
-button:hover, .add_button{
     cursor:pointer;
+}
+button{
+    background-color: rgb(222, 222, 222);
 }
 
 .delete_button, .add_button{
@@ -95,29 +98,45 @@ button:hover, .add_button{
     color: red;
 }
 
+
+
+/* filters and options */
 .options{
     justify-content: space-between;
     align-items:center;
     padding: 15px;
+    background-color:rgb(222, 222, 222);
 }
-
-.filters button:hover{
-    color:blue;
-}
-.clear_button button:hover{
-    color:red;
+.filters{
+    display:flex;
+    justify-content:space-around;
 }
 
 .items_count{
     opacity:70%;
 }
-.active{
-    margin-inline:5px;
+
+.filters button:hover{
+    color:blue;
 }
+.active{
+    margin-inline:15px;
+}
+.clear_completed:hover{
+    color:red;
+}
+
+/* mobile filters */
+.mobile{
+    display:none;
+}
+
+
 
 /* utility classes */
 .container{
-    max-width: 500px;
+    padding: 30px;
+    max-width: 600px;
     margin: auto;
 }
 
@@ -131,4 +150,29 @@ button:hover, .add_button{
 
 .hide{
     display:none;
+}
+.error{
+    background-color:rgb(240, 63, 63);
+    color:white;
+    padding:7px;
+    border-radius: 5px;
+    position: absolute;
+    top:23%;
+}
+
+
+/* media queries */
+
+@media(max-width: 800px){
+    .filters{
+        background: rgb(222, 222, 222);
+        color:black;
+        height:50px;
+        border-radius:3px;
+        display:flex;
+        justify-content:space-evenly;
+    }
+    .options .filters{
+        display: none;
+    }
 }
