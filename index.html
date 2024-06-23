@@ -14,7 +14,7 @@
             <input type="text" name="new_todo_text" class="new_todo_text" placeholder="Create a new todo...">
             <input type="submit" value="+" class="add_button">
         </form>
-        <ul>
+        <ul class="desktop">
             <li class="options">
                 <div class="items_count"></div>
                 <div class="filters">
@@ -27,6 +27,11 @@
                 </div>
             </li>
         </ul>
+        <div class="mobile filters">
+            <button class="all" value="All">All </button>
+            <button class="active" value="Active"> Active </button>
+            <button class="completed" value="Completed"> Completed</button>
+        </div>
     </div>
 
     <script src="./script.js"></script>
